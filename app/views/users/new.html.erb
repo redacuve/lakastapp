@@ -1,2 +1,27 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h2 class="col-8 m-auto py-3">Create your account!</h2>
+  <div class= "col-6 m-auto ">
+    <%= form_with model: @user, url: registration_path, local:true do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+        <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li class="text-danger"><%= message %></li>
+            <% end %>
+        </ul>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class:'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, class:'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class:'form-control' %>
+      </div>
+      <%= f.submit 'Create Account', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
