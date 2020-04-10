@@ -6,8 +6,8 @@ class StaticPagesController < ApplicationController
 
   def create_login
     if (@user = User.find_by(email: params[:email]))
-      login @user
-      redirect_to @user
+      login_user(@user)
+      redirect_to dashboard_path
     else
       flash[:error] = "User doesn't exist"
       redirect_to login_path
@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
   end
 
   def logout
-    logout
+    logout_user
     redirect_to root_path
   end
 

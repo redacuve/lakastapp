@@ -15,6 +15,7 @@
 
   <div class="navbar-collapse offcanvas-collapse" id="navbarDefault">
     <ul class="navbar-nav mr-auto">
+    <% if logged_in? %>
       <li class="nav-item active">
         <a class="nav-link" href="#">My profile <span class="sr-only">(current)</span></a>
       </li>
@@ -28,8 +29,16 @@
         <a class="nav-link" href="#">All groups</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Sign Out</a>
+        <%= link_to "Log Out", logout_path, class: 'nav-link', method: 'delete' %>
       </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Register", registration_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Log In', login_path, class: "nav-link" %>
+      </li>
+    <% end %>
     </ul>
   </div>
 </nav>

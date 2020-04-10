@@ -1,9 +1,10 @@
 module StaticPagesHelper
-  def login(user)
+  def login_user(user)
     session[:current_user] = user.id
+    current_user
   end
 
-  def logout(_user)
+  def logout_user
     session.delete(:current_user)
     @current_user = nil
   end
