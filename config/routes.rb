@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :groups
   post 'registration', to: 'users#create'
   get 'registration', to: 'users#new'
   get 'login', to: 'static_pages#login'
