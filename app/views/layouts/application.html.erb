@@ -22,5 +22,11 @@
     <main class="container">
       <%= yield %>
     </main>
+    <script>
+      function mytoggler() {
+        let elem = document.getElementById("navbarDefault");
+        elem.classList.toggle("open");
+      }
+    </script>
   </body>
 </html>
