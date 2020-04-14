@@ -10,6 +10,7 @@ class RecordsController < ApplicationController
 
   def new
     @record = Record.new
+    @groups = Group.all
   end
 
   def create

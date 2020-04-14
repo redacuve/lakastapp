@@ -20,6 +20,10 @@
         <%= form.number_field :minutes %>
     </div>
 
+    <div>
+        <%= form.collection_select :group_id, options_for_select(@groups) %>
+    </div>
+
     <div class="actions">
         <%= form.submit "Create this record", class: 'btn btn-success'%>
     </div>
