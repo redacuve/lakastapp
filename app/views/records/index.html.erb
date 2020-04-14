@@ -1,0 +1,12 @@
+<h1>All Records</h1>
+<%= link_to "Add new Record", new_record_path, class: 'btn btn-success' %>
+<br>
+<hr>
+<% @records.each do |record| %>
+    <%= record.name %>
+    <%= record.minutes %>
+    <%= record.authorid %>
+    <%= link_to "See program", record_path(record), class: 'btn btn-warning' %>
+    <%= link_to 'Delete', record, method: 'delete', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+    <hr>
+<% end %>

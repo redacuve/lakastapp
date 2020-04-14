@@ -1,0 +1,6 @@
+<h2>New Record</h2>
+<h3>Name: <%= @record.name %></h3>
+<h3>Minutes: <%= @record.minutes %></h3>
+<h3>Authorid: <%= @record.authorid %></h3>
+<%= link_to 'Edit', edit_record_path(@record), class: 'btn btn-warning' %>
+<%= link_to 'Delete', @record, method: 'delete', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
