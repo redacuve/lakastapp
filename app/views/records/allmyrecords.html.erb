@@ -19,7 +19,10 @@
 <% @records.each do |record| %>
     <%= record.name %>
     <%= record.minutes %>
-    <%= record.author.name %>
+    <%= current_user.name %>
+    <% if record.group.icon.url%>
+        <%= image_tag record.group.icon.thumb.url, class: 'img img-fluid' %>
+    <% end %>
     <%= link_to "See program", record_path(record), class: 'btn btn-warning' %>
     <%= link_to 'Delete', record, method: 'delete', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
     <hr>

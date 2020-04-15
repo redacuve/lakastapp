@@ -32,6 +32,8 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'carrierwave', '~> 2.0'
 # Help with Ibm Cloud (aws configuration)
 gem 'fog-aws'
+# image resizing
+gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

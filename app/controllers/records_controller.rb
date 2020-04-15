@@ -16,9 +16,9 @@ class RecordsController < ApplicationController
   def allmyrecords
     @records = case params[:sort]
                when 'desc'
-                 Record.mine(current_user).grouped.ancients
+                 Record.mine(current_user).includes(:group).grouped.ancients
                else
-                 Record.mine(current_user).grouped.recents
+                 Record.mine(current_user).includes(:group).grouped.recents
                end
   end
 
@@ -42,7 +42,7 @@ class RecordsController < ApplicationController
     @record.authorid = @current_user.id
     if @record.save
       flash[:success] = 'Record created successfully'
-      redirect_to records_path
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -62,7 +62,7 @@ class RecordsController < ApplicationController
   def destroy
     @record.destroy
     flash[:success] = 'Record deleted successfully'
-    redirect_to records_path
+    redirect_to dashboard_path
   end
 
   private

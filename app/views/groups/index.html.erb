@@ -3,11 +3,11 @@
 <br>
 <hr>
 <% @groups.each do |group| %>
-    <%= group.name %>
-    <%= group.user_id %>
-    <% if group.icon.url%>
-        <%= image_tag group.icon.url, class: 'img img-fluid' %>
+    <% if group.icon.thumb.url %>
+        <%= image_tag group.icon.thumb.url, class: 'img img-fluid' %>
     <% end %>
+    <%= group.name %>
+    <%= localize(group.created_at, format: :sample) %>
     <%= link_to "See program", group_path(group), class: 'btn btn-warning' %>
     <hr>
 <% end %>
