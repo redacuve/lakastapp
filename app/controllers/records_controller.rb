@@ -14,11 +14,21 @@ class RecordsController < ApplicationController
   end
 
   def allmyrecords
-    @records = Record.mine(current_user).grouped.recents
+    @records = case params[:sort]
+               when 'desc'
+                 Record.mine(current_user).grouped.ancients
+               else
+                 Record.mine(current_user).grouped.recents
+               end
   end
 
   def allmyexternalrecords
-    @records = Record.mine(current_user).not_grouped.recents
+    @records = case params[:sort]
+               when 'desc'
+                 Record.mine(current_user).not_grouped.ancients
+               else
+                 Record.mine(current_user).not_grouped.recents
+               end
   end
 
   def show; end
