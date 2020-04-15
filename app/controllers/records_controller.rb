@@ -3,7 +3,14 @@ class RecordsController < ApplicationController
   before_action :set_record, only: %i[show edit update destroy]
 
   def index
-    @records = Record.all
+    @records = case params[:sort]
+               when 'asc'
+                 Record.all.recents
+               when 'desc'
+                 Record.all.ancients
+               else
+                 Record.all.recents
+               end
   end
 
   def show; end
