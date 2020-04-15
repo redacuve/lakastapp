@@ -1,5 +1,5 @@
 <h1>New Group</h1>
-<%= form_with(model: @group, local: true) do |form| %>
+<%= form_with(model: @group, local:true, html: { multipart: true }) do |form| %>
     <% if @group.errors.any? %>
     <div id="error_explanation">
         <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -18,7 +18,8 @@
 
     <div class="field">
         <%= form.label :icon %>
-        <%= form.text_field :icon %>
+        <%= form.file_field :icon, class: 'form-control' %>
+        <%= form.hidden_field :icon_cache %>
     </div>
 
     <div class="actions">

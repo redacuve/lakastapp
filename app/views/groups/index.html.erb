@@ -5,6 +5,9 @@
 <% @groups.each do |group| %>
     <%= group.name %>
     <%= group.user_id %>
+    <% if group.icon.url%>
+        <%= image_tag group.icon.url, class: 'img img-fluid' %>
+    <% end %>
     <%= link_to "See program", group_path(group), class: 'btn btn-warning' %>
     <hr>
 <% end %>

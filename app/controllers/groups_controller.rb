@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:user_id, :name, :icon)
+    params.require(:group).permit(:user_id, :name, :icon, :icon_cache)
   end
 
   def set_group

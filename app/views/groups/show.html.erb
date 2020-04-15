@@ -1,3 +1,6 @@
 <h2>Program or show</h2>
 <h3>Name: <%= @group.name %></h3>
 <h3>name: <%= @group.name %></h3>
+<% if @group.icon.url%>
+    <%= image_tag @group.icon.url, class: 'img img-fluid' %>
+<% end %>
