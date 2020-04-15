@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   post 'login', to: 'static_pages#create_login'
   delete 'logout', to: 'static_pages#logout'
   get 'dashboard', to: 'static_pages#dashboard'
+  get 'allrecords', to: 'records#allmyrecords'
+  get 'allexternalrecords', to: 'records#allmyexternalrecords'
   root 'static_pages#index'
 end

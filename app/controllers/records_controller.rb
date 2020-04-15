@@ -5,12 +5,20 @@ class RecordsController < ApplicationController
   def index
     @records = case params[:sort]
                when 'asc'
-                 Record.all.recents
+                 Record.includes(:author).all.recents
                when 'desc'
-                 Record.all.ancients
+                 Record.includes(:author).all.ancients
                else
-                 Record.all.recents
+                 Record.includes(:author).all.recents
                end
+  end
+
+  def allmyrecords
+    @records = Record.mine(current_user).grouped.recents
+  end
+
+  def allmyexternalrecords
+    @records = Record.mine(current_user).not_grouped.recents
   end
 
   def show; end

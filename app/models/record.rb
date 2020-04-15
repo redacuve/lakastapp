@@ -6,4 +6,7 @@ class Record < ApplicationRecord
   belongs_to :group
   scope :recents, -> { order(updated_at: :desc) }
   scope :ancients, -> { order(updated_at: :asc) }
+  scope :grouped, -> { where.not(group_id: nil) }
+  scope :not_grouped, -> { where(group_id: nil) }
+  scope :mine, -> (user_id) { where(authorid: user_id)}
 end
