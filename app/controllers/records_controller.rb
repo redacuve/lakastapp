@@ -10,7 +10,6 @@ class RecordsController < ApplicationController
 
   def new
     @record = Record.new
-    @groups = Group.all
   end
 
   def create
@@ -48,6 +47,6 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:name, :authorid, :minutes)
+    params.require(:record).permit(:name, :authorid, :minutes, :group_id)
   end
 end
