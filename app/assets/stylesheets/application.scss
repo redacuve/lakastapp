@@ -14,7 +14,27 @@
  *= require_self
  */
 
- @import "bootstrap";
+@import "bootstrap/scss/functions"; 
+@import "bootstrap/scss/variables";
+  $theme-colors: ( 
+    default: #434b54,
+    primary: #3779c2,
+    secondary: #5fb523,
+    info: rgb(24, 26, 39),
+    success: rgb(122, 176, 74),
+    warning: rgb(247, 160, 18),
+    danger: rgb(244, 67, 54),
+    dark: #3C4858,
+    light: #F9F7F6,
+    primary_shades: #83b0e2,
+    primary_accent: #0a488c,
+    secondary_accent: #2d6d00,
+    secondary_shades: #a2e274,
+    default_shades: #18222d,
+    default_accent: #7c838b
+  );
+
+@import "bootstrap";
 
 html,
 body {
