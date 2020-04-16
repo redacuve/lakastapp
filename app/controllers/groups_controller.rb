@@ -10,9 +10,7 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def show
-
-  end
+  def show; end
 
   def create
     @group = Group.new(group_params)
