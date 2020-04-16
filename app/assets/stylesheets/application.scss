@@ -35,6 +35,10 @@
   );
 
 @import "bootstrap";
+@font-face {
+  font-family: "Gochi";
+  src: font-url('GochiHand-Regular.ttf') format("truetype");
+}
 
 html,
 body {
@@ -105,3 +109,6 @@ body {
   color: #343a40;
 }
 
+.f-gochi {
+  font-family: "Gochi";
+}
