@@ -4,7 +4,7 @@
 <hr>
 <% @groups.each do |group| %>
     <% if group.icon.thumb.url %>
-        <%= image_tag group.icon.thumb.url, class: 'img img-fluid' %>
+        <%= image_tag group.icon.thumb.url, class: 'img img-fluid', alt: group.name %>
     <% end %>
     <%= group.name %>
     <%= localize(group.created_at, format: :sample) %>

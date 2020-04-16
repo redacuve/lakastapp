@@ -18,11 +18,11 @@
 
     <div class="field">
         <%= form.label :icon %>
-        <%= form.file_field :icon, class: 'form-control' %>
+        <%= form.file_field :icon %>
         <%= form.hidden_field :icon_cache %>
     </div>
 
     <div class="actions">
-        <%= form.submit %>
+        <%= form.submit class: 'btn btn-success'%>
     </div>
 <% end %>

@@ -10,13 +10,15 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def show; end
+  def show
+
+  end
 
   def create
     @group = Group.new(group_params)
     @group.user_id = current_user.id
     if @group.save
-      flash[:success] = 'Event created successfully'
+      flash[:success] = 'Program created successfully'
       redirect_to groups_path
     else
       render :new
@@ -30,6 +32,6 @@ class GroupsController < ApplicationController
   end
 
   def set_group
-    @group = Group.find(params[:id])
+    @group = Group.includes(records: :author).find(params[:id])
   end
 end
