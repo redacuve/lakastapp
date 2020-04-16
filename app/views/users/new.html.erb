@@ -1,5 +1,5 @@
-<h2 class="col-8 m-auto py-3">Create your account!</h2>
-  <div class= "col-6 m-auto ">
+<h2 class="col-sm-10 m-auto py-3 text-center">Create your account!</h2>
+  <div class= "col-sm-10 m-auto ">
     <%= form_with model: @user, url: registration_path, local:true do |f| %>
       <% if @user.errors.any? %>
         <div id="error_explanation">
@@ -10,23 +10,25 @@
         </ul>
         </div>
       <% end %>
-      <div class="form-group">
+      <div class="form-group field">
         <%= f.label :name %>
         <%= f.text_field :name, class:'form-control' %>
       </div>
-      <div class="form-group">
+      <div class="form-group field">
         <%= f.label :username %>
         <%= f.text_field :username, class:'form-control' %>
       </div>
-      <div class="form-group">
+      <div class="form-group field">
         <%= f.label :email %>
         <%= f.text_field :email, class:'form-control' %>
       </div>
-      <div class="form-group">
+      <div class="form-group field">
         <%= f.label :avatar %>
-        <%= f.file_field :avatar %>
+        <%= f.file_field :avatar, class: 'form-control-file' %>
         <%= f.hidden_field :avatar_cache %>
       </div>
-      <%= f.submit 'Create Account', class: 'btn btn-primary' %>
+      <div class="actions">
+        <%= f.submit 'Create Account', class: 'btn btn-primary_accent btn-block' %>
+      </div>
     <% end %>
   </div>

@@ -1,10 +1,10 @@
-<h2 class="col-sm-6 m-auto py-3">Please log in: </h2>
-  <div class= "col-sm-6 m-auto ">
+<h2 class="col-sm-8 m-auto py-3 text-center">Please log in: </h2>
+  <div class= "col-sm-10 m-auto ">
     <%= form_with url: login_path do |f| %>
       <div class="form-group">
         <%= f.label :email %>
         <%= f.text_field :email, class:'form-control', required: true %>
       </div>
-      <%= f.submit 'Log In', class: 'btn btn-primary' %>
+      <%= f.submit 'Log In', class: 'btn btn-primary_accent btn-block' %>
     <% end %>
   </div>
