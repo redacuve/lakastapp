@@ -5,7 +5,8 @@ class StaticPagesController < ApplicationController
   def login; end
 
   def create_login
-    if (@user = User.find_by(email: params[:email]))
+    email_user = params[:email].strip.downcase
+    if (@user = User.find_by(email: email_user))
       login_user(@user)
       redirect_to dashboard_path
     else
