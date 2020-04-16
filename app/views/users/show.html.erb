@@ -1,1 +1,9 @@
 <h2>Name: <%= @user.name %></h2>
+<h2>Avatar: </h2>
+<% if @user.avatar.url %>
+    <%= image_tag @user.avatar.url, class: 'img img-fluid', alt: @user.name %>
+<% else %>
+    <%= image_tag 'avatar500.png', class: "img img-fluid", alt: 'default avatar' %>
+<% end %>
+<br>
+<%= link_to "Edit my profile", profile_edit_path(current_user), class: 'btn btn-warning' %>

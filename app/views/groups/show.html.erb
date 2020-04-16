@@ -3,6 +3,7 @@
 <% if @group.icon.url%>
     <%= image_tag @group.icon.url, class: 'img img-fluid', alt: @group.name %>
 <% end %>
+<h2>Records of this program</h2>
 <hr>
 <% @group.records.each do |record| %>
     <%= record.name %>

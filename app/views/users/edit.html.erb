@@ -1,6 +1,6 @@
-<h2 class="col-8 m-auto py-3">Create your account!</h2>
+<h2 class="col-8 m-auto py-3">Update your account!</h2>
   <div class= "col-6 m-auto ">
-    <%= form_with model: @user, url: registration_path, local:true do |f| %>
+    <%= form_with model: @user, url: profile_update_path(current_user), local:true do |f| %>
       <% if @user.errors.any? %>
         <div id="error_explanation">
         <ul>
@@ -23,10 +23,15 @@
         <%= f.text_field :email, class:'form-control' %>
       </div>
       <div class="form-group">
-        <%= f.label :avatar %>
+        <% if !@user.avatar.url.nil? %>
+            <%= image_tag @user.avatar.thumb.url, class: 'img img-fluid', alt: @user.name %>
+        <% else %>
+            <%= image_tag 'avatarthumb.png', class: "img img-fluid", alt: 'default avatar' %>
+        <% end %>
+        <%= f.label :avatar, "Change mi avatar" %>
         <%= f.file_field :avatar %>
         <%= f.hidden_field :avatar_cache %>
       </div>
-      <%= f.submit 'Create Account', class: 'btn btn-primary' %>
+      <%= f.submit 'Update My Account', class: 'btn btn-primary' %>
     <% end %>
   </div>

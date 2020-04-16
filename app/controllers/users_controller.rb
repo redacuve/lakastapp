@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:show]
-
+  before_action :correct_user, only: [:show, :edit, :update]
+  
   def new
     @user = User.new
   end
@@ -15,6 +15,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = 'User updated successfully'
+      redirect_to profile_path(current_user)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def correct_user
@@ -23,6 +34,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :username)
+    params.require(:user).permit(:name, :email, :username, :avatar, :avatar_cache)
   end
 end
