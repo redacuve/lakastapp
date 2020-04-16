@@ -19,5 +19,8 @@ class StaticPagesController < ApplicationController
     redirect_to root_path
   end
 
-  def dashboard; end
+  def dashboard
+    @allmyrecords = Record.mine(current_user).recents.includes(:group)
+    @hash = Record.mine(current_user).joins(:group).group('groups.name').sum('minutes')
+  end
 end

@@ -1,1 +1,36 @@
 <h1>THIS IS DASHBOARD</h1>
+<div>
+<% if !current_user.avatar.thumb.url.nil? %>
+    <%= image_tag current_user.avatar.thumb.url, class: 'img img-fluid rounded-circle' %>
+<% else %>
+    <%= image_tag 'avatarthumb.png', class: 'img img-fluid rounded-circle'%>
+<% end %>
+<%= content_tag :p, current_user.name %>
+<%= content_tag(:p, "@#{current_user.username}", class: 'text-muted') %>
+</div>
+<div>
+    Total viewed hours
+    <%= @allmyrecords.sum(:minutes) %>
+</div>
+<div>
+    Most viewed show
+    <% if !@hash.empty? %>
+        <%= @hash.key(@hash.values.max) %>
+        <%= "With " + @hash.values.max.to_s + " total minutes"%>
+    <% else %>
+        No Enough Data
+    <% end %>
+</div>
+<div>
+    Total records created
+    <%= @allmyrecords.count %>
+</div>
+<div>
+    Last show viewed
+    <% if !@allmyrecords.first.nil? && !@allmyrecords.first.group.nil? %>
+        <%= @allmyrecords.first.group.name + " " + time_ago_in_words(@allmyrecords.first.created_at) + " ago"%>
+    <% else %>
+        No Enough Data
+    <% end %>
+
+</div>
