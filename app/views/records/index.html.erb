@@ -1,26 +1,44 @@
-<div class="nav-scroller bg-white shadow-sm">
+<div class="nav-scroller bg-white shadow-sm justify-content-around d-flex">
   <nav class="nav nav-underline">
     <%= link_to({ sort: :asc }, class:'nav-link') do %>
-        Most Recent
-        <span class="badge badge-pill bg-light align-text-bottom"><%= @records.where(created_at: Date.today.all_day).count %></span>
+      Most Recent
+      <span class="badge badge-pill bg-light align-text-bottom"><%= @records.where(created_at: Date.today.all_day).count %></span>
+      <i class="fas fa-sort-amount-up-alt"></i>
     <% end %>
     <%= link_to({ sort: :desc }, class:'nav-link') do %>
-        Most Ancient
-        <span class="badge badge-pill bg-light align-text-bottom"><%= @records.count - @records.where(created_at: Date.today.all_day).count %></span>
+      Most Ancient
+      <span class="badge badge-pill bg-light align-text-bottom"><%= @records.count - @records.where(created_at: Date.today.all_day).count %></span>
+      <i class="fas fa-sort-amount-down-alt"></i>
     <% end %>
   </nav>
 </div>
 
-<h1>All Records</h1>
-<%= link_to "Add new Record", new_record_path, class: 'btn btn-success' %>
-<br>
+<h1>Total Records</h1>
+<%= link_to "Add new Record", new_record_path, class: 'btn btn-success btn-block' %>
 <hr>
-<h3>Total minutes: <%= @records.sum(:minutes) %></h3>
+<h4 class="d-flex justify-content-end text-muted">Total minutes:&nbsp;<strong class="text-info"><%= @records.sum(:minutes) %></strong></h4>
+<hr>
+<div class="no-external-container">
 <% @records.each do |record| %>
-    <%= record.name %>
-    <%= record.minutes %>
-    <%= record.author.name %>
-    <%= link_to "See program", record_path(record), class: 'btn btn-warning' %>
-    <%= link_to 'Delete', record, method: 'delete', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+    <div class="record-container d-flex align-items-center d-flex justify-content-between">
+      <div class="img-record">
+        <% if !record.group.nil? && !record.group.icon.url.nil? %>
+          <% if record.group.icon.url %>
+            <%= image_tag record.group.icon.thumb.url, class: 'img img-fluid' %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="text-record">
+        <p class="h6 m-0"><%= record.name %></p>
+        <p class="h6 m-0 text-muted"><%= record.author.name %></p>
+        <p class="h6 m-0 text-muted">@<%= record.author.username %></p>
+        <p class="h6 m-0"><%= localize(record.created_at, format: :sample) %></p>
+      </div>
+      <div class="minutes-record text-right">
+        <h5 class="text-muted m-0"><strong class="text-info"><%= record.minutes %></strong> minutes.</h5>
+      </div>
+    </div>
+    <%= link_to "See details", record_path(record), class: 'btn btn-primary_accent btn-block mt-3' %>
     <hr>
 <% end %>
+</div>
