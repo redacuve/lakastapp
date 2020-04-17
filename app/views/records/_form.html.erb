@@ -1,31 +1,32 @@
 <%= form_with(model: record, local: true) do |form| %>
     <% if record.errors.any? %>
     <div id="error_explanation">
-        <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
         <ul>
             <% record.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+                <li class="text-danger"><%= message %></li>
             <% end %>
         </ul>
     </div>
     <% end %>
 
-    <div class="field">
+    <div class="form-group field">
         <%= form.label :name %>
-        <%= form.text_field :name %>
+        <%= form.text_field :name ,class: "form-control" %>
     </div>
 
-    <div class="field">
+    <div class="form-group field">
         <%= form.label :minutes %>
-        <%= form.number_field :minutes %>
+        <%= form.number_field :minutes, class: "form-control" %>
     </div>
 
-    <div>
-        <%= form.label :group_id %>
-        <%= form.collection_select :group_id, Group.all, :id, :name, prompt: true %>
+    <div class="input-group mb-3 field">
+        <div class="input-group-prepend">
+            <%= form.label :group_id, class:'input-group-text' %>
+        </div>
+        <%= form.collection_select :group_id, Group.all, :id, :name, { prompt: true }, { class: 'custom-select' } %>
     </div>
 
     <div class="actions">
-        <%= form.submit class: 'btn btn-success' %>
+        <%= form.submit class: 'btn btn-success btn-block' %>
     </div>
 <% end %>
