@@ -1,37 +1,4 @@
-<h2 class="col-8 m-auto py-3">Update your account!</h2>
-  <div class= "col-6 m-auto ">
-    <%= form_with model: @user, url: profile_update_path(current_user), local:true do |f| %>
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-        <ul>
-            <% @user.errors.full_messages.each do |message| %>
-                <li class="text-danger"><%= message %></li>
-            <% end %>
-        </ul>
-        </div>
-      <% end %>
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class:'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :username %>
-        <%= f.text_field :username, class:'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.text_field :email, class:'form-control' %>
-      </div>
-      <div class="form-group">
-        <% if !@user.avatar.url.nil? %>
-            <%= image_tag @user.avatar.thumb.url, class: 'img img-fluid', alt: @user.name %>
-        <% else %>
-            <%= image_tag 'avatarthumb.png', class: "img img-fluid", alt: 'default avatar' %>
-        <% end %>
-        <%= f.label :avatar, "Change mi avatar" %>
-        <%= f.file_field :avatar %>
-        <%= f.hidden_field :avatar_cache %>
-      </div>
-      <%= f.submit 'Update My Account', class: 'btn btn-primary' %>
-    <% end %>
+<h2 class="col-sm-10 m-auto py-3">Update your account!</h2>
+  <div class= "col-sm-10 m-auto ">
+    <%= render 'form', user: @user, update: true %>
   </div>

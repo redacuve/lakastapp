@@ -1,0 +1,40 @@
+<%= form_with model: user, url: registration_path, local:true do |f| %>
+    <% if user.errors.any? %>
+    <div id="error_explanation">
+        <ul>
+            <% user.errors.full_messages.each do |message| %>
+            <li class="text-danger"><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+    <div class="form-group field">
+        <%= f.label :name %>
+        <%= f.text_field :name, class:'form-control' %>
+    </div>
+    <div class="form-group field">
+        <%= f.label :username %>
+        <%= f.text_field :username, class:'form-control' %>
+    </div>
+    <div class="form-group field">
+        <%= f.label :email %>
+        <%= f.text_field :email, class:'form-control' %>
+    </div>
+    <div class="form-group field">
+        <% btnstr = 'Create Account' %>
+        <%= f.label :avatar, class: 'mr-2' %>
+        <% if update %>
+            <% btnstr = 'Update Profile' %>
+            <% if !@user.avatar.url.nil? %>
+                <%= image_tag @user.avatar.thumb.url, class: 'img img-fluid mb-2', alt: @user.name %>
+            <% else %>
+                <%= image_tag 'avatarthumb.png', class: "img img-fluid mb-2", alt: 'default avatar' %>
+            <% end %>
+        <% end %>
+        <%= f.file_field :avatar, class: 'form-control-file' %>
+        <%= f.hidden_field :avatar_cache %>
+    </div>
+    <div class="actions">
+        <%= f.submit btnstr, class: 'btn btn-primary_accent btn-block' %>
+    </div>
+<% end %>
