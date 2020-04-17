@@ -1,36 +1,50 @@
-<h1>THIS IS DASHBOARD</h1>
-<div>
-<% if !current_user.avatar.thumb.url.nil? %>
-    <%= image_tag current_user.avatar.thumb.url, class: 'img img-fluid rounded-circle' %>
-<% else %>
-    <%= image_tag 'avatarthumb.png', class: 'img img-fluid rounded-circle'%>
-<% end %>
-<%= content_tag :p, current_user.name %>
-<%= content_tag(:p, "@#{current_user.username}", class: 'text-muted') %>
-</div>
-<div>
-    Total viewed hours
-    <%= @allmyrecords.sum(:minutes) %>
-</div>
-<div>
-    Most viewed show
-    <% if !@hash.empty? %>
-        <%= @hash.key(@hash.values.max) %>
-        <%= "With " + @hash.values.max.to_s + " total minutes"%>
+<div class="pt-2 d-flex">
+    <% if !current_user.avatar.thumb.url.nil? %>
+        <%= image_tag current_user.avatar.thumb.url, class: 'img-fluid rounded-circle float-left' %>
     <% else %>
-        No Enough Data
+        <%= image_tag 'avatarthumb.png', class: 'img img-fluid rounded-circle'%>
     <% end %>
+    <div class="d-flex align-items-start flex-column mt-3">
+        <%= content_tag :span, current_user.name, class: 'h4' %>
+        <%= content_tag(:span, "@#{current_user.username}", class: 'text-muted') %>
+    </div>
 </div>
-<div>
-    Total records created
-    <%= @allmyrecords.count %>
-</div>
-<div>
-    Last show viewed
-    <% if !@allmyrecords.first.nil? && !@allmyrecords.first.group.nil? %>
-        <%= @allmyrecords.first.group.name + " " + time_ago_in_words(@allmyrecords.first.created_at) + " ago"%>
-    <% else %>
-        No Enough Data
-    <% end %>
-
+<!--<div class="d-flex flex-wrap text-center align-items-stretch justify-content-center">-->
+<div class="row text-center">
+    <div class="row viewed-hours p-2 text-light rounded m-3 align-items-center">
+        <i class="fas fa-eye fa-3x text-light position-absolute"></i>
+            <div class="col-12">Total viewed minutes:</div>
+            <div class="col-12 h1">
+            <%= @allmyrecords.sum(:minutes) %>
+            </div>
+    </div>
+    <div class="most-viewed p-2 text-light rounded m-3">
+        <div>Most viewed show:</div>
+        <% if !@hash.empty? %>
+            <div class="h1"><%= @hash.key(@hash.values.max) %></div>
+            <div><%= "With " + @hash.values.max.to_s + " total minutes"%></div>
+        <% else %>
+            <div>No Enough Data</div>
+        <% end %>
+    </div>
+    <div class="row total-created p-2 text-light rounded m-3 align-items-center">
+    <i class="fas fa-edit fa-3x text-light position-absolute"></i>
+        <div class="col-12">Total records created</div>
+        <div class="h1 col-12"><%= @allmyrecords.count %></div>
+    </div>
+    <div class="last-viewed p-2 text-light rounded m-3">
+        <div>Last show viewed</div>
+        <% if !@allmyrecords.first.nil? && !@allmyrecords.first.group.nil? %>
+            <div class="h1">
+                <%= @allmyrecords.first.group.name %>
+            </div>
+            <div>
+                <%= time_ago_in_words(@allmyrecords.first.created_at) + " ago"%>
+            </div>
+        <% else %>
+            <div>
+                No Enough Data
+            </div>
+        <% end %>
+    </div>
 </div>

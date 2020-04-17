@@ -1,3 +1,23 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.viewed-hours {
+    width: 42%;
+    background:  radial-gradient(ellipse at center, rgba(255,97,12,1) 0%, rgba(255,97,12,1) 0%, rgba(255,179,139,1) 100%);
+
+}
+
+.most-viewed {
+    width: 42%;
+    background: radial-gradient(ellipse at center, rgba(8,183,130,1) 0%, rgba(8,183,130,1) 0%, rgba(123,226,195,1) 100%);
+}
+
+.total-created {
+    width: 42%;
+    background: radial-gradient(ellipse at center, rgba(48,34,191,1) 0%, rgba(48,34,191,1) 0%, rgba(147,139,229,1) 100%);
+}
+
+.last-viewed {
+    width: 42%;
+    background:  radial-gradient(ellipse at center, rgba(130,157,19,1) 0%, rgba(130,157,19,1) 0%, rgba(141,215,77,1) 100%);
+}
