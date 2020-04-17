@@ -2,11 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.record-container {
+.record-container, .external-container, .no-external-container {
     width: 100%;
 }
 
 .record-text, .record-actions {
     width: 49%;
     display: inline-block;
+}
+
+.external-container {
+    .text-record {
+        width: 50%
+    }
+
+    .minutes-record {
+        width: 45%
+    }
+
+    .img-record {
+        width: 0;
+    }
+}
+
+.no-external-container {
+    .text-record {
+        width: 33%
+    }
+
+    .minutes-record {
+        width: 33%
+    }
+
+    .img-record {
+        width: 33%
+    }
 }
