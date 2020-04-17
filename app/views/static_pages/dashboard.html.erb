@@ -12,7 +12,7 @@
 <!--<div class="d-flex flex-wrap text-center align-items-stretch justify-content-center">-->
 <div class="row text-center">
     <div class="row viewed-hours p-2 text-light rounded m-3 align-items-center">
-        <i class="fas fa-eye fa-3x text-light position-absolute"></i>
+        <i class="fas fa-eye fa-2x text-light position-absolute"></i>
             <div class="col-12">Total viewed minutes:</div>
             <div class="col-12 h1">
             <%= @allmyrecords.sum(:minutes) %>
@@ -28,7 +28,7 @@
         <% end %>
     </div>
     <div class="row total-created p-2 text-light rounded m-3 align-items-center">
-    <i class="fas fa-edit fa-3x text-light position-absolute"></i>
+    <i class="fas fa-edit fa-2x text-light position-absolute"></i>
         <div class="col-12">Total records created</div>
         <div class="h1 col-12"><%= @allmyrecords.count %></div>
     </div>
