@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show]
 
   def index
-    @groups = Group.all
+    @groups = Group.all.includes(:user)
   end
 
   def new

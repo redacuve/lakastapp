@@ -1,13 +1,22 @@
-<h1>GROUPS</h1>
-<%= link_to "Add new Program", new_group_path, class: 'btn btn-success' %>
+<h1 class="text-center mt-3">All Programs & Shows</h1>
+<%= link_to "Add new Program", new_group_path, class: 'btn btn-success btn-block' %>
 <br>
 <hr>
-<% @groups.each do |group| %>
-    <% if group.icon.thumb.url %>
-        <%= image_tag group.icon.thumb.url, class: 'img img-fluid', alt: group.name %>
+<div class="programs-container">
+    <% @groups.each do |group| %>
+        <div class="program-single d-flex align-items-center justify-content-around">
+            <div class="img">
+                <% if group.icon.thumb.url %>
+                    <%= image_tag group.icon.thumb.url, class: 'img img-fluid', alt: group.name %>
+                <% end %>
+            </div>
+            <div class="text">
+                <p class="h2"><%= group.name %></p>
+                <p class="text-muted"><strong>Created:</strong><%= localize(group.created_at, format: :sample) %></p>
+                <p class="text-muted"><strong>Created by: @</strong><%= group.user.username %></p>
+            </div>
+        </div>
+        <%= link_to "See program", group_path(group), class: 'btn btn-primary_accent btn-block text-light' %>
+        <hr>
     <% end %>
-    <%= group.name %>
-    <%= localize(group.created_at, format: :sample) %>
-    <%= link_to "See program", group_path(group), class: 'btn btn-warning' %>
-    <hr>
-<% end %>
+</div>
