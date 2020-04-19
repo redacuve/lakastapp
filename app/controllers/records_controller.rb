@@ -5,11 +5,11 @@ class RecordsController < ApplicationController
   def index
     @records = case params[:sort]
                when 'asc'
-                 Record.includes(:author).all.recents
+                 Record.includes(:group).includes(:author).all.recents
                when 'desc'
-                 Record.includes(:author).all.ancients
+                 Record.includes(:group).includes(:author).all.ancients
                else
-                 Record.includes(:author).all.recents
+                 Record.includes(:group).includes(:author).all.recents
                end
   end
 
