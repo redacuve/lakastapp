@@ -1,8 +1,4 @@
-<% if update %>
-    <%= form_with model: user, url: profile_update_path, local:true do |f| %>
-<% else %>
-    <%= form_with model: user, url: registration_path, local:true do |f| %>
-<% end %>
+<%= form_with model: user, url: update ? profile_update_path : registration_path, local:true do |f| %>
     <% if user.errors.any? %>
     <div id="error_explanation">
         <ul>
