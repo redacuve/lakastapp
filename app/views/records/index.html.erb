@@ -1,11 +1,11 @@
 <div class="nav-scroller bg-white shadow-sm justify-content-around d-flex">
   <nav class="nav nav-underline">
-    <%= link_to({ sort: :asc }, class:'nav-link') do %>
+    <%= link_to({ sort: :desc }, class:'nav-link') do %>
       Most Recent
       <span class="badge badge-pill bg-light align-text-bottom"><%= @records.where(created_at: Date.today.all_day).count %></span>
       <i class="fas fa-sort-amount-up-alt"></i>
     <% end %>
-    <%= link_to({ sort: :desc }, class:'nav-link') do %>
+    <%= link_to({ sort: :asc }, class:'nav-link') do %>
       Most Ancient
       <span class="badge badge-pill bg-light align-text-bottom"><%= @records.count - @records.where(created_at: Date.today.all_day).count %></span>
       <i class="fas fa-sort-amount-down-alt"></i>
