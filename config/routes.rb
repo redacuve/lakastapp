@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :groups
+  resources :groups, only: [:index, :show, :new, :create]
   resources :records
   get 'profile/:id', to: 'users#show', as: 'profile'
   post 'registration', to: 'users#create'
