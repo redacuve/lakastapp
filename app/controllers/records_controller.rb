@@ -3,31 +3,26 @@ class RecordsController < ApplicationController
   before_action :set_record, only: %i[show edit update destroy]
 
   def index
-    @records = case params[:sort]
-               when 'asc'
-                 Record.includes(:group).includes(:author).all.recents
-               when 'desc'
-                 Record.includes(:group).includes(:author).all.ancients
+    @records = if params[:sort] == 'asc' || params[:sort] == 'desc'
+                 Record.includes(:group).includes(:author).all.order_record(params[:sort])
                else
-                 Record.includes(:group).includes(:author).all.recents
+                 Record.includes(:group).includes(:author).all
                end
   end
 
   def allmyrecords
-    @records = case params[:sort]
-               when 'desc'
-                 Record.mine(current_user).includes(:group).grouped.ancients
+    @records = if params[:sort] == 'asc' || params[:sort] == 'desc'
+                 Record.mine(current_user).includes(:group).grouped.order_record(params[:sort])
                else
-                 Record.mine(current_user).includes(:group).grouped.recents
+                 Record.mine(current_user).includes(:group).grouped
                end
   end
 
   def allmyexternalrecords
-    @records = case params[:sort]
-               when 'desc'
-                 Record.mine(current_user).not_grouped.ancients
+    @records = if params[:sort] == 'asc' || params[:sort] == 'desc'
+                 Record.mine(current_user).not_grouped.order_record(params[:sort]).includes(:group)
                else
-                 Record.mine(current_user).not_grouped.recents
+                 Record.mine(current_user).not_grouped.includes(:group)
                end
   end
 

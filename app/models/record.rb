@@ -9,4 +9,5 @@ class Record < ApplicationRecord
   scope :grouped, -> { where.not(group_id: nil) }
   scope :not_grouped, -> { where(group_id: nil) }
   scope :mine, ->(user_id) { where(authorid: user_id) }
+  scope :order_record, ->(ord) { order(updated_at: ord) }
 end
