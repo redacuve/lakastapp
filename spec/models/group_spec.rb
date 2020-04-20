@@ -13,7 +13,6 @@ RSpec.describe Group, type: :model do
   end
 
   it 'a group is saved' do
-    expect(Group.all.count).to eq(0)
     subject.save(validate: false)
     expect(Group.all.count).to eq(1)
   end

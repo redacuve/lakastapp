@@ -48,13 +48,11 @@ RSpec.describe Record, type: :model do
   it 'should see the record on not_grouped if it is saved without group' do
     subject.group_id = nil
     subject.save
-    expect(Record.mine(user1).grouped.count).to eq(0)
     expect(Record.mine(user1).not_grouped.count).to eq(1)
   end
 
   it 'should see the record on grouped if it is saved within a group' do
     subject.save
-    expect(Record.mine(user1).not_grouped.count).to eq(0)
     expect(Record.mine(user1).grouped.count).to eq(1)
   end
 end
