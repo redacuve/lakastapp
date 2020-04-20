@@ -21,7 +21,7 @@ class StaticPagesController < ApplicationController
   end
 
   def dashboard
-    @allmyrecords = Record.mine(current_user).recents.includes(:group)
+    @allmyrecords = Record.all_my_total(current_user, 'desc')
     @hash = Record.mine(current_user).joins(:group).group('groups.name').sum('minutes')
   end
 end

@@ -12,17 +12,17 @@ class RecordsController < ApplicationController
 
   def allmyrecords
     @records = if params[:sort] == 'asc' || params[:sort] == 'desc'
-                 Record.mine(current_user).includes(:group).grouped.order_record(params[:sort])
+                 Record.all_my_records(current_user, params[:sort])
                else
-                 Record.mine(current_user).includes(:group).grouped
+                 Record.all_my_records(current_user)
                end
   end
 
   def allmyexternalrecords
     @records = if params[:sort] == 'asc' || params[:sort] == 'desc'
-                 Record.mine(current_user).not_grouped.order_record(params[:sort]).includes(:group)
+                 Record.all_my_external(current_user, params[:sort])
                else
-                 Record.mine(current_user).not_grouped.includes(:group)
+                 Record.all_my_external(current_user)
                end
   end
 
