@@ -1,3 +1,17 @@
+<div class="nav-scroller bg-white shadow-sm justify-content-around d-flex">
+  <nav class="nav nav-underline">
+    <%= link_to({ sort: :asc }, class:'nav-link') do %>
+      Most Recent
+      <span class="badge badge-pill bg-light align-text-bottom"><%= @groups.where(created_at: Date.today.all_day).count %></span>
+      <i class="fas fa-sort-amount-up-alt"></i>
+    <% end %>
+    <%= link_to({ sort: :desc }, class:'nav-link') do %>
+      Most Ancient
+      <span class="badge badge-pill bg-light align-text-bottom"><%= @groups.count - @groups.where(created_at: Date.today.all_day).count %></span>
+      <i class="fas fa-sort-amount-down-alt"></i>
+    <% end %>
+  </nav>
+</div>
 <h1 class="text-center mt-3">All Programs & Shows</h1>
 <%= link_to "Add new Program", new_group_path, class: 'btn btn-success btn-block' %>
 <br>

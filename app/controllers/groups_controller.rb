@@ -3,7 +3,11 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show]
 
   def index
-    @groups = Group.all.includes(:user)
+    @groups = if params[:sort] == 'asc' || params[:sort] == 'desc'
+                Group.all.includes(:user).order_group(params[:sort])
+              else
+                Group.all.includes(:user)
+              end
   end
 
   def new
