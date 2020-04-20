@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
-  before_save :downcases
+  before_save :remove_whitespaces_downcases
   before_validation :remove_whitespaces_downcases
   validates :name, presence: true, length: { maximum: 100 }
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }
@@ -13,11 +13,6 @@ class User < ApplicationRecord
 
   def remove_whitespaces_downcases
     self.email = email.strip
-    self.username = username.strip.downcase
-  end
-
-  def downcases
-    self.email = email.strip.downcase
     self.username = username.strip.downcase
   end
 end
