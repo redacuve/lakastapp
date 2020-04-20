@@ -60,9 +60,13 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    @record.destroy
-    flash[:success] = 'Record deleted successfully'
-    redirect_to dashboard_path
+    if @record.destroy
+      flash[:success] = 'Record deleted successfully'
+      redirect_to dashboard_path
+    else
+      flash[:danger] = 'Something is wrong, try again later'
+      redirect_to record_path(params[:id])
+    end
   end
 
   private
