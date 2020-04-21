@@ -101,6 +101,25 @@ Clone or fork the <a href="https://github.com/redacuve/lakastapp">repo</a> [git@
 
 Note* Ruby and Rails needs to be installed to run the code, check [here](https://www.ruby-lang.org/en/documentation/installation/) and [here](https://guides.rubyonrails.org/getting_started.html) for further steps. Also you need to setup your own IBM Cloud or AWS keys on the credentials. [credentials](https://guides.rubyonrails.org/security.html#custom-credentials) to work properly.
 
+Attention* If you want to setup this project locally you need to add YOUR OWN CLOUD KEYS on credientials.yml, to edit this file you NEED to run this command:
+```
+ $ EDITOR='nano' rails credentials:edit
+```
+note* you must change the editor to your favorite, for example, gedit, vim, geany, kate, kwrite, emacs, etc.
+Also, you MUST configure the file carrierwave.rb, this file is located at:
+```
+.
+├── config
+│   ├── initializers
+│   │   ├── carrierwave.rb
+
+```
+The configuration of this file needs to have YOUR OWN cloud configuration:
+* region: 'eu-west-1',
+* host: 's3.example.com',
+* endpoint: 'https://s3.example.com:8080'
+* config.fog_directory  = 'name_of_bucket'
+
 <!-- HOW IT WORKS -->
 ## How it Works
 <div align="center">
