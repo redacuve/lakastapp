@@ -1,0 +1,49 @@
+<div class="pt-2 d-flex">
+    <% if !current_user.avatar.thumb.url.nil? %>
+        <%= image_tag current_user.avatar.thumb.url, class: 'img-fluid rounded-circle float-left' %>
+    <% else %>
+        <%= image_tag 'avatarthumb.png', class: 'img img-fluid rounded-circle'%>
+    <% end %>
+    <div class="d-flex align-items-start flex-column mt-3">
+        <%= content_tag :span, current_user.name, class: 'h4' %>
+        <%= content_tag(:span, "@#{current_user.username}", class: 'text-muted') %>
+    </div>
+</div>
+<div class="row text-center">
+    <div class="row viewed-hours p-2 text-light rounded m-3 align-items-center">
+        <i class="fas fa-eye fa-2x text-light position-absolute"></i>
+            <div class="col-12">Total viewed minutes:</div>
+            <div class="col-12 h2">
+            <%= @allmyrecords.sum(:minutes) %>
+            </div>
+    </div>
+    <div class="most-viewed p-2 text-light rounded m-3">
+        <div>Most viewed show:</div>
+        <% if !@hash.empty? %>
+            <div class="h3"><%= @hash.key(@hash.values.max) %></div>
+            <div><%= "With " + @hash.values.max.to_s + " total minutes"%></div>
+        <% else %>
+            <div>No Enough Data</div>
+        <% end %>
+    </div>
+    <div class="row total-created p-2 text-light rounded m-3 align-items-center">
+    <i class="fas fa-edit fa-2x text-light position-absolute"></i>
+        <div class="col-12">Total records created</div>
+        <div class="h2 col-12"><%= @allmyrecords.count %></div>
+    </div>
+    <div class="last-viewed p-2 text-light rounded m-3">
+        <div>Last show viewed</div>
+        <% if !@allmyrecords.first.nil? && !@allmyrecords.first.group.nil? %>
+            <div class="h3">
+                <%= @allmyrecords.first.group.name %>
+            </div>
+            <div>
+                <%= time_ago_in_words(@allmyrecords.first.created_at) + " ago"%>
+            </div>
+        <% else %>
+            <div>
+                No Enough Data
+            </div>
+        <% end %>
+    </div>
+</div>

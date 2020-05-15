@@ -1,0 +1,15 @@
+// Place all the styles related to the Groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.program-single {
+    width: 100%;
+    .img-container {
+        width: 37%;
+        display: inline-block;
+    }
+    .text {
+        width: 60%;
+        display: inline-block;
+    }
+}
