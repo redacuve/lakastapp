@@ -1,0 +1,12 @@
+<h2 class="mt-3"><%= @user.name %></h2>
+<h4 class="text-muted mb-0">@<%= @user.username %></h4>
+<h4 class="text-muted mb-0"><%= @user.email %></h4>
+<p>Created <%= time_ago_in_words(@user.created_at) %> ago</p>
+<h5>Avatar: </h5>
+<% if @user.avatar.url %>
+    <%= image_tag @user.avatar.url, class: 'img img-fluid', alt: @user.name %>
+<% else %>
+    <%= image_tag 'avatar500.png', class: "img img-fluid", alt: 'default avatar' %>
+<% end %>
+<br>
+<%= link_to "Edit my profile", profile_edit_path(current_user), class: 'btn btn-warning btn-block mt-3' %>

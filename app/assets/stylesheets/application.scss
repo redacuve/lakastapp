@@ -1,0 +1,120 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap/scss/functions"; 
+@import "bootstrap/scss/variables";
+  $theme-colors: ( 
+    default: #434b54,
+    primary: #3779c2,
+    secondary: #5fb523,
+    info: rgb(24, 26, 39),
+    success: rgb(122, 176, 74),
+    warning: rgb(247, 160, 18),
+    danger: rgb(244, 67, 54),
+    dark: #3C4858,
+    light: #F9F7F6,
+    primary_shades: #83b0e2,
+    primary_accent: #0a488c,
+    secondary_accent: #2d6d00,
+    secondary_shades: #a2e274,
+    default_shades: #18222d,
+    default_accent: #7c838b
+  );
+
+@import "bootstrap";
+@font-face {
+  font-family: "Gochi";
+  src: font-url('GochiHand-Regular.ttf') format("truetype");
+}
+
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+body {
+  padding-top: 56px;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    right: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background: linear-gradient(to bottom, rgba(10,72,140,1) 0%, rgba(10,72,140,1) 0%, rgba(88,145,209,1) 100%);
+    transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.f-gochi {
+  font-family: "Gochi";
+}
+
+.field_with_errors {
+  input {
+    border: 1px solid red;
+  }
+}

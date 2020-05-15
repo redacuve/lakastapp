@@ -1,0 +1,17 @@
+<h2 class="mt-3">Record Details:</h2>
+<div class="record-container d-flex align-items-center">
+    <div class="record-text">
+        <h3><%= @record.name %></h3>
+        <p class="h4"><strong><%= @record.minutes %></strong> Minutes</p>
+        <p class="text-muted mb-0">By: @<%= @record.author.username %></p>
+    </div>
+    <div class="record-actions">
+        <%= link_to 'Edit', edit_record_path(@record), class: 'btn btn-warning btn-block' %>
+        <%= link_to 'Delete', @record, method: 'delete', class: 'btn btn-danger btn-block', data: { confirm: 'Are you sure?' } %>
+    </div>
+</div>
+<hr>
+<% if !@record.group.nil? && @record.group.icon.url %>
+    <h3 class="text-center"><%= @record.group.name %></h3>
+    <%= image_tag @record.group.icon.url, class: 'img img-fluid' %>
+<% end %>
