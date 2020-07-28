@@ -43,8 +43,6 @@
 
 * [Contact](#contact)
 
-* [Acknowledgements](#acknowledgements)
-
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
@@ -54,6 +52,10 @@ This is a mobile web app where you can keep a record of every program you watch 
 With lakastapp you can know the time you watch every program.
 
 Go to: <a href="https://lakastapp.herokuapp.com/" target="_blank">https://lakastapp.herokuapp.com/</a>
+
+<p align="center">
+  <img src="lakastapp.gif" width="450">
+</p>
 
 ## Entity Relationship Diagram
 
@@ -225,9 +227,3 @@ This project is under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GN
 Rey David Cuevas Vela - [@redacuve](https://twitter.com/redacuve) - redacuve@gmail.com -[linkedin.com/in/redacuve/](https://www.linkedin.com/in/redacuve/)
 
 Project Link: [github.com/redacuve/lakastapp](https://github.com/redacuve/lakastapp) - Lakastapp!.
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## Acknowledgements
-
-* [Rey David Cuevas Vela](https://github.com/redacuve)
