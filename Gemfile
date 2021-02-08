@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Bootstrap for style
 gem 'bootstrap', '~> 4.4.1'
 # Uploader
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 # Help with Ibm Cloud (aws configuration)
 gem 'fog-aws'
 # image resizing
